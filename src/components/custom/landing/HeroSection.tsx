@@ -1,4 +1,6 @@
 import { Button } from "@/components/ui/button";
+import { RELATIVE_PATHS } from "@/lib/constants";
+import Link from "next/link";
 
 export default function HeroSection() {
   return (
@@ -13,7 +15,7 @@ export default function HeroSection() {
                   Tech Leaders
                 </span>
               </h1>
-              <p className="text-lg text-blue-100 leading-relaxed">
+              <p className="text-base text-blue-100 leading-relaxed">
                 Discover groundbreaking projects, innovative research, and the
                 brilliant minds shaping our city's emergence as a premier
                 technology hub.
@@ -21,14 +23,12 @@ export default function HeroSection() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button>Explore Projects</Button>
-              <Button>Learn More</Button>
-              {/* <button className="bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors duration-200 shadow-lg">
-                Explore Projects
-              </button>
-              <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-colors duration-200">
-                Learn More
-              </button> */}
+              <Button size="lg" variant="white" asChild>
+                <Link href={RELATIVE_PATHS.projects}>Explore Projects</Link>
+              </Button>
+              <Button size="lg" variant="outlineWhite">
+                <Link href={RELATIVE_PATHS.about}>Learn More</Link>
+              </Button>
             </div>
 
             <div className="grid grid-cols-3 gap-8 pt-8">
@@ -60,7 +60,7 @@ export default function HeroSection() {
               <h3 className="text-xl font-semibold mb-2">
                 Latest Innovation Showcase
               </h3>
-              <p className="text-blue-100">
+              <p className="text-blue-100 max-md:hidden">
                 Featuring breakthrough AI research and sustainable technology
                 initiatives from our community.
               </p>
