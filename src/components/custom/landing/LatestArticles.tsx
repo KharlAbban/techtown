@@ -1,36 +1,7 @@
+import { Button } from "@/components/ui/button";
+import { LATEST_ARTICLES } from "@/lib/constants";
+
 export default function LatestArticles() {
-  const articles = [
-    {
-      id: 1,
-      title: "The Rise of AI in Urban Planning: A Local Perspective",
-      excerpt:
-        "How our university researchers are pioneering artificial intelligence solutions for smarter city development and sustainable growth.",
-      author: "Dr. Sarah Chen",
-      date: "March 15, 2024",
-      category: "AI Research",
-      readTime: "5 min read",
-    },
-    {
-      id: 2,
-      title: "Building Tomorrow's Tech Workforce Today",
-      excerpt:
-        "Exploring innovative educational approaches and industry partnerships that are preparing students for the future of technology.",
-      author: "Prof. Michael Rodriguez",
-      date: "March 12, 2024",
-      category: "Education",
-      readTime: "7 min read",
-    },
-    {
-      id: 3,
-      title: "Sustainable Technology: From Lab to Market",
-      excerpt:
-        "Success stories of clean technology innovations developed at our university that are making real-world impact.",
-      author: "Dr. Emily Thompson",
-      date: "March 10, 2024",
-      category: "Sustainability",
-      readTime: "6 min read",
-    },
-  ];
   return (
     <section className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -38,14 +9,14 @@ export default function LatestArticles() {
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
             Latest Insights & Articles
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-sm md:text-base lg:text-xl text-gray-600 max-w-3xl mx-auto">
             Stay informed with the latest research findings, industry insights,
             and thought leadership from our academic community.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {articles.map((article, index) => (
+          {LATEST_ARTICLES.map((article, index) => (
             <article
               key={article.id}
               className={`group cursor-pointer ${
@@ -118,9 +89,9 @@ export default function LatestArticles() {
         </div>
 
         <div className="text-center mt-12">
-          <button className="bg-white text-blue-600 border-2 border-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors duration-200">
+          <Button size="lg" variant="outlineBlue">
             View All Articles
-          </button>
+          </Button>
         </div>
       </div>
     </section>

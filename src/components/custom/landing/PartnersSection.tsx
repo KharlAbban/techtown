@@ -1,15 +1,7 @@
-export default function PartnersSection() {
-  const partners = [
-    { name: "TechCorp Industries", logo: "TC", tier: "Platinum" },
-    { name: "Innovation Labs", logo: "IL", tier: "Gold" },
-    { name: "Future Systems", logo: "FS", tier: "Gold" },
-    { name: "Digital Solutions", logo: "DS", tier: "Silver" },
-    { name: "Smart City Initiative", logo: "SC", tier: "Silver" },
-    { name: "Green Energy Co", logo: "GE", tier: "Silver" },
-    { name: "AI Research Foundation", logo: "AR", tier: "Bronze" },
-    { name: "Biotech Ventures", logo: "BV", tier: "Bronze" },
-  ];
+import { Button } from "@/components/ui/button";
+import { PARTNERS } from "@/lib/constants";
 
+export default function PartnersSection() {
   const getTierColor = (tier: string) => {
     switch (tier) {
       case "Platinum":
@@ -40,7 +32,7 @@ export default function PartnersSection() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-8">
-          {partners.map((partner, index) => (
+          {PARTNERS.map((partner, index) => (
             <div key={index} className="group cursor-pointer">
               <div className="bg-gray-50 rounded-xl p-8 hover:bg-white hover:shadow-lg transition-all duration-300 text-center">
                 <div
@@ -81,12 +73,12 @@ export default function PartnersSection() {
             ecosystem.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors duration-200 shadow-lg">
+            <Button size="lg" variant="white">
               Become a Partner
-            </button>
-            <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-colors duration-200">
+            </Button>
+            <Button size="lg" variant="outlineWhite">
               Learn More
-            </button>
+            </Button>
           </div>
         </div>
       </div>

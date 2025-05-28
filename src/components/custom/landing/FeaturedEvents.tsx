@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, Calendar } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { FEATURED_EVENTS, RELATIVE_PATHS } from "@/lib/constants";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -34,7 +35,7 @@ export default function FeaturedEvents() {
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
             Upcoming Events
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-sm md:text-base lg:text-xl text-gray-600 max-w-2xl mx-auto">
             Join us for workshops, conferences, and networking events
           </p>
         </motion.div>
@@ -46,24 +47,7 @@ export default function FeaturedEvents() {
           viewport={{ once: true }}
           variants={staggerContainer}
         >
-          {[
-            {
-              title: "Tech Innovation Summit 2024",
-              date: "March 15, 2024",
-              time: "9:00 AM - 5:00 PM",
-              location: "University Main Auditorium",
-              description:
-                "Annual summit bringing together industry leaders, researchers, and students.",
-            },
-            {
-              title: "AI & Machine Learning Workshop",
-              date: "March 22, 2024",
-              time: "2:00 PM - 6:00 PM",
-              location: "Computer Science Building",
-              description:
-                "Hands-on workshop covering the latest in AI and ML technologies.",
-            },
-          ].map((event, index) => (
+          {FEATURED_EVENTS.map((event, index) => (
             <motion.div key={index} variants={fadeInUp}>
               <Card className="h-full">
                 <CardHeader>
@@ -85,7 +69,7 @@ export default function FeaturedEvents() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 mb-4">{event.description}</p>
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700">
+                  <Button variant="blue" className="w-full">
                     Register Now
                   </Button>
                 </CardContent>
@@ -94,19 +78,13 @@ export default function FeaturedEvents() {
           ))}
         </motion.div>
 
-        <motion.div
-          className="text-center mt-12"
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          variants={fadeInUp}
-        >
+        <div className="text-center mt-12">
           <Button size="lg" variant="outline">
-            <Link href="/events" className="flex items-center">
+            <Link href={RELATIVE_PATHS.events} className="flex items-center">
               View All Events <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
