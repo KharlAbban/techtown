@@ -5,6 +5,11 @@ import {
   LatestArticles,
   PartnersSection,
 } from "@/components/custom/landing";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "HomePage",
+};
 
 export default function Home() {
   return (

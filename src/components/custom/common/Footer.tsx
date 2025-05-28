@@ -1,22 +1,15 @@
+import {
+  APP_DESCRIPTION,
+  APP_LOGO_URL,
+  APP_TITLE,
+  FOOTER_CONTENT,
+} from "@/lib/constants";
+import Image from "next/image";
+import Link from "next/link";
+import { FaLinkedin, FaYoutube, FaFacebook, FaMedium } from "react-icons/fa6";
+
 export default function Footer() {
-  const footerSections = [
-    {
-      title: "University",
-      links: ["About Us", "Mission & Vision", "Faculty", "Research", "Campus"],
-    },
-    {
-      title: "Innovation",
-      links: ["Projects", "Labs", "Incubator", "Patents", "Publications"],
-    },
-    {
-      title: "Community",
-      links: ["Events", "News", "Partners", "Alumni", "Careers"],
-    },
-    {
-      title: "Resources",
-      links: ["Contact", "Support", "Documentation", "Media Kit", "Guidelines"],
-    },
-  ];
+  const { footerSections, legal } = FOOTER_CONTENT;
 
   return (
     <footer className="bg-gray-900 text-white">
@@ -25,28 +18,50 @@ export default function Footer() {
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">U</span>
-              </div>
+              <Image
+                src={APP_LOGO_URL}
+                height={50}
+                width={50}
+                className="object-contain relative"
+                alt={APP_TITLE}
+              />
               <span className="ml-3 text-2xl font-bold">TechTown</span>
             </div>
-            <p className="text-gray-300 mb-6 leading-relaxed">
-              Fostering innovation and building tomorrow's tech leaders through
-              cutting-edge research, industry collaboration, and community
-              engagement.
+            <p className="text-gray-300 mb-6 text-sm leading-relaxed">
+              {APP_DESCRIPTION}
             </p>
             <div className="flex space-x-4">
-              <button className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors duration-200">
-                <span className="text-sm font-bold">f</span>
+              <button
+                title="LinkedIn"
+                className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors duration-200"
+              >
+                <span className="text-sm font-bold">
+                  <FaLinkedin size={20} />
+                </span>
               </button>
-              <button className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors duration-200">
-                <span className="text-sm font-bold">t</span>
+              <button
+                title="YouTube"
+                className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors duration-200"
+              >
+                <span className="text-sm font-bold">
+                  <FaYoutube size={20} />
+                </span>
               </button>
-              <button className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors duration-200">
-                <span className="text-sm font-bold">in</span>
+              <button
+                title="Facebook"
+                className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors duration-200"
+              >
+                <span className="text-sm font-bold">
+                  <FaFacebook size={20} />
+                </span>
               </button>
-              <button className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors duration-200">
-                <span className="text-sm font-bold">yt</span>
+              <button
+                title="Medium"
+                className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors duration-200"
+              >
+                <span className="text-sm font-bold">
+                  <FaMedium size={20} />
+                </span>
               </button>
             </div>
           </div>
@@ -58,12 +73,12 @@ export default function Footer() {
               <ul className="space-y-3">
                 {section.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
-                    <a
+                    <Link
                       href="#"
                       className="text-gray-300 hover:text-blue-400 transition-colors duration-200"
                     >
                       {link}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -74,27 +89,21 @@ export default function Footer() {
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-400 mb-4 md:mb-0">
-              <p>&copy; 2024 University TechTown. All rights reserved.</p>
+              <p>
+                &copy; {new Date().getFullYear()} {APP_TITLE} - All rights
+                reserved.
+              </p>
             </div>
             <div className="flex space-x-6">
-              <a
-                href="#"
-                className="text-gray-400 hover:text-blue-400 transition-colors duration-200"
-              >
-                Privacy Policy
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-blue-400 transition-colors duration-200"
-              >
-                Terms of Service
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-blue-400 transition-colors duration-200"
-              >
-                Accessibility
-              </a>
+              {legal.map((item) => (
+                <Link
+                  key={item.text}
+                  href={item.href}
+                  className="text-gray-400 hover:text-blue-400 transition-colors duration-200 text-sm"
+                >
+                  {item.text}
+                </Link>
+              ))}
             </div>
           </div>
         </div>
